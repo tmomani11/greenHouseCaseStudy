@@ -9,7 +9,7 @@ The project is intentionally frontend-first. The goal is not production tax infr
 Render URL:
 
 ```text
-dep-d9h891b7uimc738g79e0
+https://greenhousecasestudy.onrender.com
 ```
 
 This app is Render-ready. The included `render.yaml` starts a small Python server that serves both the frontend and the mock API routes.
