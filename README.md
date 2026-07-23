@@ -9,7 +9,8 @@ The project is intentionally frontend-first. The goal is not production tax infr
 Render URL:
 
 ```text
-dep-d9h891b7uimc738g79e0```
+dep-d9h891b7uimc738g79e0
+```
 
 This app is Render-ready. The included `render.yaml` starts a small Python server that serves both the frontend and the mock API routes.
 
@@ -119,3 +120,4 @@ render.yaml        Render deployment configuration
 ## Notes for reviewers
 
 EasyTax prioritizes a polished, understandable frontend over backend completeness. The design decisions are focused on trust, orientation, and action: clients always see the next step, CPAs can defend the numbers they review, collaboration stays attached to the work, and Smart Review explains both its recommendation and its uncertainty.
+
