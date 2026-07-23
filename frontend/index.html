@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EasyTax</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">ET</div>
+          <div>
+            <strong>EasyTax</strong>
+            <span>2025 tax return</span>
+          </div>
+        </div>
+
+        <label class="field-label" for="roleSelect">Working as</label>
+        <select id="roleSelect" class="select"></select>
+
+        <nav id="nav" class="nav"></nav>
+
+        <div class="sidebar-note">
+          <span class="dot live"></span>
+          Demo workspace with sample documents, questions, and return data.
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div id="breadcrumbs" class="breadcrumbs">Workspace</div>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+          <div class="top-actions">
+            <button id="backToWork" class="icon-button" title="Return to active workflow">Back</button>
+            <div id="userPill" class="user-pill"></div>
+          </div>
+        </header>
+
+        <section id="view" class="view"></section>
+      </main>
+    </div>
+
+    <template id="emptyTemplate">
+      <div class="empty">
+        <h2>No matching items</h2>
+        <p>Try a different search or filter.</p>
+      </div>
+    </template>
+
+    <script src="/static/js/app.js" type="module"></script>
+  </body>
+</html>
