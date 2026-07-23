@@ -6,13 +6,13 @@ The project is intentionally frontend-first. The goal is not production tax infr
 
 ## Live prototype
 
-GitHub Pages URL:
+Render URL:
 
 ```text
 Add your deployed GitHub Pages link here
 ```
 
-This app is GitHub Pages-ready. It runs as static HTML, CSS, and JavaScript with sample data loaded from `frontend/data/bootstrap.json`.
+This app is Render-ready. The included `render.yaml` starts a small Python server that serves both the frontend and the mock API routes.
 
 ## What EasyTax demonstrates
 
@@ -36,7 +36,7 @@ This app is GitHub Pages-ready. It runs as static HTML, CSS, and JavaScript with
 - Messages can be sent and appear immediately in the active thread.
 - Smart Review corrections update the recommendation card, detail panel, corrected amount, reason, confidence, and action state.
 - Search, filtering, queue ranking, source selection, document trace panels, and contextual navigation are wired up.
-- The GitHub Pages build works without a backend by loading static JSON data.
+- The Python server serves the frontend and mock API routes from one process.
 
 ## What is simulated
 
@@ -46,47 +46,9 @@ This app is GitHub Pages-ready. It runs as static HTML, CSS, and JavaScript with
 - Authentication and permissions are simulated through the role switcher.
 - Messages and Smart Review corrections persist only during the current browser session.
 - Uploads and correction submissions update the interface but do not store data in a database.
-- The optional Python server is included only for local API-style testing.
+- The backend is intentionally lightweight and uses in-memory/sample data only.
 
-## Run locally as a static app
-
-This is the same mode GitHub Pages uses.
-
-```bash
-cd frontend
-python -m http.server 8080
-```
-
-Open:
-
-```text
-http://127.0.0.1:8080
-```
-
-## Deploy to GitHub Pages
-
-GitHub Pages cannot run the Python backend, so publish the contents of the `frontend` folder.
-
-The published site should contain:
-
-```text
-index.html
-css/styles.css
-js/app.js
-data/bootstrap.json
-```
-
-Recommended steps:
-
-1. Copy the contents of `frontend/` into the root of your GitHub Pages repository or Pages branch.
-2. Commit and push the files.
-3. In GitHub, open `Settings -> Pages`.
-4. Select the branch and folder that contain `index.html`.
-5. Wait for Pages to deploy, then open the generated URL.
-
-## Optional Python server
-
-The project also includes a dependency-free Python server for local API-style testing.
+## Run locally
 
 ```bash
 cd backend
@@ -104,6 +66,28 @@ If port `8000` is already in use:
 ```bash
 python server.py 8765
 ```
+
+## Deploy to Render
+
+This repository includes `render.yaml`, so Render can deploy it as a Blueprint.
+
+Recommended steps:
+
+1. Push this project to GitHub.
+2. In Render, choose `New -> Blueprint`.
+3. Select the GitHub repository.
+4. Render will read `render.yaml`.
+5. Deploy the `easytax-prototype` web service.
+
+Manual Render settings also work:
+
+```text
+Runtime: Python
+Build command: leave blank
+Start command: python backend/server.py
+```
+
+The server reads Render's `PORT` environment variable automatically and binds to `0.0.0.0`.
 
 ## Suggested walkthrough
 
@@ -128,7 +112,9 @@ frontend/
   css/styles.css   visual design and responsive layout
   js/app.js        frontend state, routing, and interactions
   data/bootstrap.json
-                   static data used by GitHub Pages
+                   static fallback data for frontend-only hosting
+
+render.yaml        Render deployment configuration
 ```
 
 ## Notes for reviewers

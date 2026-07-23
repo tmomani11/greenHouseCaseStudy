@@ -13,7 +13,7 @@ from data import dataset
 
 ROOT = Path(__file__).resolve().parent.parent
 FRONTEND = ROOT / "frontend"
-HOST = "0.0.0.0"
+HOST = os.environ.get("HOST", "0.0.0.0")
 PORT = int(sys.argv[1] if len(sys.argv) > 1 else os.environ.get("PORT", "8000"))
 
 
@@ -41,14 +41,22 @@ class PrototypeHandler(BaseHTTPRequestHandler):
 
         if path.startswith("/static/"):
             relative = unquote(path.removeprefix("/static/"))
-            target = (FRONTEND / relative).resolve()
-            if FRONTEND.resolve() not in target.parents and target != FRONTEND.resolve():
-                self.send_error(403)
-                return
-            self.send_file(target)
+            self.send_frontend_file(relative)
+            return
+
+        if path.startswith(("/css/", "/js/", "/data/")):
+            relative = unquote(path.lstrip("/"))
+            self.send_frontend_file(relative)
             return
 
         self.send_error(404)
+
+    def send_frontend_file(self, relative: str) -> None:
+        target = (FRONTEND / relative).resolve()
+        if FRONTEND.resolve() not in target.parents and target != FRONTEND.resolve():
+            self.send_error(403)
+            return
+        self.send_file(target)
 
     def do_POST(self) -> None:
         path = urlparse(self.path).path

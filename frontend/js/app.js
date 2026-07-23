@@ -68,11 +68,27 @@ const stepLabels = ["Welcome", "Documents", "Questions", "Review", "File"];
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
 async function init() {
-  const response = await fetch("/api/bootstrap");
-  state.data = await response.json();
+  state.data = await loadBootstrapData();
   state.user = state.data.users.find((user) => user.id === "u_client");
   bindChrome();
   render();
+}
+
+async function loadBootstrapData() {
+  try {
+    const apiResponse = await fetch("/api/bootstrap");
+    if (apiResponse.ok) {
+      return await apiResponse.json();
+    }
+  } catch (error) {
+    // GitHub Pages serves the app without the Python API, so fall back to static data.
+  }
+
+  const staticResponse = await fetch("./data/bootstrap.json");
+  if (!staticResponse.ok) {
+    throw new Error("Could not load EasyTax sample data.");
+  }
+  return await staticResponse.json();
 }
 
 function bindChrome() {
@@ -628,15 +644,7 @@ function renderAi() {
   root.querySelector("#submitCorrection").addEventListener("click", async () => {
     const correctionValue = Number(root.querySelector("#correctionAmount").value);
     const correctionReason = root.querySelector("#correctionReason").value.trim();
-    await fetch("/api/corrections", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fieldId: selected.id,
-        value: correctionValue,
-        reason: correctionReason,
-      }),
-    });
+    await submitCorrection(selected.id, correctionValue, correctionReason);
     selected.correctedAmount = correctionValue;
     selected.correctionReason = correctionReason || "Correction entered by reviewer.";
     selected.status = "Correction applied";
@@ -650,6 +658,18 @@ function renderAi() {
     render();
   });
   return root;
+}
+
+async function submitCorrection(fieldId, value, reason) {
+  try {
+    await fetch("/api/corrections", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fieldId, value, reason }),
+    });
+  } catch (error) {
+    // Static hosting has no backend; the visible UI update below is the demo behavior.
+  }
 }
 
 function renderRoles() {
@@ -704,16 +724,16 @@ function renderComplexity() {
 
 function renderRequirements() {
   const requirements = [
-    ["Source document traceability", "Return fields link to documents, page, source text, confidence, and calculation.", "trace"],
-    ["Client and CPA collaboration", "Threads are attached to issues and distinguish internal notes from client-visible messages.", "collaboration"],
-    ["Where to start", "The client starts on a checklist with one obvious next action.", "start"],
-    ["Preserve context", "The context panel keeps active return, field, task, and navigation memory visible.", "trace"],
-    ["Role-aware experiences", "The switcher includes all six required roles, plus a firm employee personal-return context.", "roles"],
-    ["Return status and progress", "Progress shows completed steps, next action, owner, due date, and blocker.", "status"],
-    ["Actionable dashboard", "Firm queue ranks work by urgency instead of showing passive reporting.", "dashboard"],
-    ["Clickable vs editable", "Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "roles"],
-    ["Complexity navigable", "A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "complexity"],
-    ["Trustworthy Smart Review", "Recommendations show action, why, evidence, uncertainty, and correction flow.", "ai"],
+    ["traceability", "01 Source document traceability", "Return fields link to documents, page, source text, confidence, and calculation.", "Review sourced value"],
+    ["collaboration", "02 Client and CPA collaboration", "Threads are attached to issues and distinguish internal notes from client-visible messages.", "Open message thread"],
+    ["start", "03 Where to start", "The client starts on a checklist with one obvious next action.", "Open checklist"],
+    ["navigation", "04 Getting lost in the app", "The current-work panel preserves return, field, document, and CPA question context.", "Open connected context"],
+    ["roles", "05 Role-aware experiences", "The switcher includes all six required roles, plus a firm employee personal-return context.", "Open roles"],
+    ["status", "06 Return status and progress", "Progress shows completed steps, next action, owner, due date, and blocker.", "Open progress"],
+    ["dashboard", "07 Actionable dashboard", "Firm queue ranks work by urgency instead of showing passive reporting.", "Open work queue"],
+    ["affordances", "08 Clickable vs editable", "Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "View states"],
+    ["complexity", "09 Complexity made navigable", "A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "Open large queue"],
+    ["trust", "10 Trustworthy Smart Review", "Recommendations show action, why, evidence, uncertainty, and correction flow.", "Open Smart Review"],
   ];
 
   const root = html(`
@@ -723,11 +743,11 @@ function renderRequirements() {
       <div class="check-list">
         ${requirements
           .map(
-            ([title, description, view]) => `
-              <button class="task-card" data-requirement="${view}">
+            ([id, title, description, cta]) => `
+              <button class="task-card requirement-card" data-requirement="${id}">
                 <span class="check-circle">OK</span>
                 <span><strong>${title}</strong><span class="muted">${description}</span></span>
-                ${badge("Complete", "done")}
+                <span class="requirement-cta">${cta}</span>
               </button>`,
           )
           .join("")}
@@ -737,12 +757,98 @@ function renderRequirements() {
 
   root.querySelectorAll("[data-requirement]").forEach((button) => {
     button.addEventListener("click", () => {
-      state.view = button.dataset.requirement;
-      remember("Requirement detail");
+      openRequirement(button.dataset.requirement);
       render();
     });
   });
   return root;
+}
+
+function openRequirement(id) {
+  const destinations = {
+    traceability: {
+      userId: "u_preparer",
+      role: "preparer",
+      view: "trace",
+      selectedFieldId: "f_wages",
+      trail: "Source trace example",
+    },
+    collaboration: {
+      userId: "u_preparer",
+      role: "preparer",
+      view: "collaboration",
+      selectedThreadId: "thread_home_office",
+      trail: "Collaboration example",
+    },
+    start: {
+      userId: "u_client",
+      role: "client",
+      view: "start",
+      trail: "First action example",
+    },
+    navigation: {
+      userId: "u_client",
+      role: "client",
+      view: "trace",
+      selectedFieldId: "f_home_office",
+      selectedThreadId: "thread_home_office",
+      trail: "Connected workflow example",
+    },
+    roles: {
+      userId: "u_admin",
+      role: "firm_admin",
+      view: "roles",
+      trail: "Role architecture example",
+    },
+    status: {
+      userId: "u_client",
+      role: "client",
+      view: "status",
+      trail: "Status example",
+    },
+    dashboard: {
+      userId: "u_preparer",
+      role: "preparer",
+      view: "dashboard",
+      queueStage: "Open items",
+      queueOwner: "All",
+      trail: "Priority queue example",
+    },
+    affordances: {
+      userId: "u_preparer",
+      role: "preparer",
+      view: "trace",
+      selectedFieldId: "f_home_office",
+      trail: "Affordance example",
+    },
+    complexity: {
+      userId: "u_admin",
+      role: "firm_admin",
+      view: "complexity",
+      queueStage: "All",
+      queueOwner: "All",
+      trail: "Scale example",
+    },
+    trust: {
+      userId: "u_preparer",
+      role: "preparer",
+      view: "ai",
+      selectedRecommendationId: "ai_k1",
+      trail: "Smart Review example",
+    },
+  };
+
+  const destination = destinations[id];
+  if (!destination) return;
+  state.user = state.data.users.find((user) => user.id === destination.userId) || state.user;
+  state.role = destination.role;
+  state.view = destination.view;
+  if (destination.selectedFieldId) state.selectedFieldId = destination.selectedFieldId;
+  if (destination.selectedThreadId) state.selectedThreadId = destination.selectedThreadId;
+  if (destination.selectedRecommendationId) state.selectedRecommendationId = destination.selectedRecommendationId;
+  if (destination.queueStage) state.queueStage = destination.queueStage;
+  if (destination.queueOwner) state.queueOwner = destination.queueOwner;
+  remember(destination.trail);
 }
 
 function renderContextPanel() {

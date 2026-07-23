@@ -452,6 +452,24 @@ tr.clickable:hover,
   background: #f5fbf8;
 }
 
+.requirement-card {
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+}
+
+.requirement-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  color: var(--green-dark);
+  background: var(--mint);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
 .filing-dashboard {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
