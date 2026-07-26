@@ -716,16 +716,16 @@ function renderComplexity() {
 
 function renderRequirements() {
   const requirements = [
-    ["traceability", "01 Source document traceability", "Return fields link to documents, page, source text, confidence, and calculation.", "Review sourced value"],
-    ["collaboration", "02 Client and CPA collaboration", "Threads are attached to issues and distinguish internal notes from client-visible messages.", "Open message thread"],
-    ["start", "03 Where to start", "The client starts on a checklist with one obvious next action.", "Open checklist"],
-    ["navigation", "04 Getting lost in the app", "The current-work panel preserves return, field, document, and CPA question context.", "Open connected context"],
-    ["roles", "05 Role-aware experiences", "The switcher includes all six required roles, plus a firm employee personal-return context.", "Open roles"],
-    ["status", "06 Return status and progress", "Progress shows completed steps, next action, owner, due date, and blocker.", "Open progress"],
-    ["dashboard", "07 Actionable dashboard", "Firm queue ranks work by urgency instead of showing passive reporting.", "Open work queue"],
-    ["affordances", "08 Clickable vs editable", "Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "View states"],
-    ["complexity", "09 Complexity made navigable", "A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "Open large queue"],
-    ["trust", "10 Trustworthy Smart Review", "Recommendations show action, why, evidence, uncertainty, and correction flow.", "Open Smart Review"],
+    ["traceability", "01 Source document traceability", " Return fields link to documents, page, source text, confidence, and calculation.", "Review sourced value"],
+    ["collaboration", "02 Client and CPA collaboration", " Threads are attached to issues and distinguish internal notes from client-visible messages.", "Open message thread"],
+    ["start", "03 Where to start", " The client starts on a checklist with one obvious next action.", "Open checklist"],
+    ["navigation", "04 Getting lost in the app", " The current-work panel preserves return, field, document, and CPA question context.", "Open connected context"],
+    ["roles", "05 Role-aware experiences", " The switcher includes all six required roles, plus a firm employee personal-return context.", "Open roles"],
+    ["status", "06 Return status and progress", " Progress shows completed steps, next action, owner, due date, and blocker.", "Open progress"],
+    ["dashboard", "07 Actionable dashboard", " Firm queue ranks work by urgency instead of showing passive reporting.", "Open work queue"],
+    ["affordances", "08 Clickable vs editable", " Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "View states"],
+    ["complexity", "09 Complexity made navigable", " A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "Open large queue"],
+    ["trust", "10 Trustworthy Smart Review", " Recommendations show action, why, evidence, uncertainty, and correction flow.", "Open Smart Review"],
   ];
 
   const root = html(`
