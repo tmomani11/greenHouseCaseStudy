@@ -9,10 +9,9 @@ The project is intentionally frontend-first. The goal is not production tax infr
 Render URL:
 
 ```text
-Add your deployed GitHub Pages link here
+https://greenhousecasestudy.onrender.com/
 ```
 
-This app is Render-ready. The included `render.yaml` starts a small Python server that serves both the frontend and the mock API routes.
 
 ## What EasyTax demonstrates
 
@@ -67,38 +66,7 @@ If port `8000` is already in use:
 python server.py 8765
 ```
 
-## Deploy to Render
 
-This repository includes `render.yaml`, so Render can deploy it as a Blueprint.
-
-Recommended steps:
-
-1. Push this project to GitHub.
-2. In Render, choose `New -> Blueprint`.
-3. Select the GitHub repository.
-4. Render will read `render.yaml`.
-5. Deploy the `easytax-prototype` web service.
-
-Manual Render settings also work:
-
-```text
-Runtime: Python
-Build command: leave blank
-Start command: python backend/server.py
-```
-
-The server reads Render's `PORT` environment variable automatically and binds to `0.0.0.0`.
-
-## Suggested walkthrough
-
-1. Start as `Maya Chen - Individual taxpayer`.
-2. Show the checklist, progress, estimated refund, and next actions.
-3. Open `Questions` and send a reply to show contextual collaboration.
-4. Switch to `Jordan Lee - Tax preparer`.
-5. Open `Review return` and click a return value to show source traceability.
-6. Open `Smart Review`, explain why an item needs confirmation, then submit a correction.
-7. Open the role switcher and show all six role types plus Jordan's personal return.
-8. Open `Case coverage` to show how the prototype maps to the case-study requirements.
 
 ## Project structure
 
