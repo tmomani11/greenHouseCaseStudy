@@ -139,20 +139,14 @@ function render() {
 
 function renderGuideHeader() {
   const currentStep = stepIndexForView();
-  const nextAction = isClientRole()
-    ? (state.role === "business_owner"
-        ? "Review your business documents and answer one CPA request to keep the entity return moving."
-        : "Answer one CPA question and upload one missing form to keep your return moving.")
-    : (state.role === "seasonal_staff"
-        ? "Clear your assigned document checks and escalate anything locked or uncertain."
-        : "Open the highest-priority return and review the sourced fields first.");
+  const nextStep = nextStepForCurrentView();
 
   const header = html(`
     <section class="guide-hero">
       <div>
         <div class="chips">${badge(isClientRole() ? (state.role === "business_owner" ? "Business filing" : "Personal filing") : "Firm workspace", "done")} ${badge("2025 return", "ai")}</div>
         <h2 class="guide-title">${isClientRole() ? (state.role === "business_owner" ? "Finish your business return step by step." : "Finish your taxes with a clear next step.") : (state.role === "seasonal_staff" ? "Work only the items assigned to you." : "Know exactly which return needs attention.")}</h2>
-        <p class="muted">${nextAction}</p>
+        <p class="muted">${nextStep.description}</p>
         <div class="stepper">
           ${stepLabels
             .map(
@@ -168,16 +162,14 @@ function renderGuideHeader() {
       </div>
       <div class="panel">
         <h2>${isClientRole() ? "Your next step" : "Recommended work"}</h2>
-        <p>${nextAction}</p>
-        <button class="primary" id="heroAction">${isClientRole() ? "Continue" : "Open return"}</button>
+        <p>${nextStep.description}</p>
+        <button class="primary" id="heroAction">${nextStep.label}</button>
       </div>
     </section>
   `);
 
   header.querySelector("#heroAction").addEventListener("click", () => {
-    state.view = isClientRole() ? "start" : "trace";
-    remember("Next best action");
-    render();
+    goToNextStep();
   });
 
   return header;
@@ -724,16 +716,16 @@ function renderComplexity() {
 
 function renderRequirements() {
   const requirements = [
-    ["traceability", "01 Source document traceability", " Return fields link to documents, page, source text, confidence, and calculation.", "Review sourced value"],
-    ["collaboration", "02 Client and CPA collaboration", " Threads are attached to issues and distinguish internal notes from client-visible messages.", "Open message thread"],
-    ["start", "03 Where to start", " The client starts on a checklist with one obvious next action.", "Open checklist"],
-    ["navigation", "04 Getting lost in the app", " The current-work panel preserves return, field, document, and CPA question context.", "Open connected context"],
-    ["roles", "05 Role-aware experiences", " The switcher includes all six required roles, plus a firm employee personal-return context.", "Open roles"],
-    ["status", "06 Return status and progress", " Progress shows completed steps, next action, owner, due date, and blocker.", "Open progress"],
-    ["dashboard", "07 Actionable dashboard", " Firm queue ranks work by urgency instead of showing passive reporting.", "Open work queue"],
-    ["affordances", "08 Clickable vs editable", " Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "View states"],
-    ["complexity", "09 Complexity made navigable", " A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "Open large queue"],
-    ["trust", "10 Trustworthy Smart Review", " Recommendations show action, why, evidence, uncertainty, and correction flow.", "Open Smart Review"],
+    ["traceability", "01 Source document traceability", "Return fields link to documents, page, source text, confidence, and calculation.", "Review sourced value"],
+    ["collaboration", "02 Client and CPA collaboration", "Threads are attached to issues and distinguish internal notes from client-visible messages.", "Open message thread"],
+    ["start", "03 Where to start", "The client starts on a checklist with one obvious next action.", "Open checklist"],
+    ["navigation", "04 Getting lost in the app", "The current-work panel preserves return, field, document, and CPA question context.", "Open connected context"],
+    ["roles", "05 Role-aware experiences", "The switcher includes all six required roles, plus a firm employee personal-return context.", "Open roles"],
+    ["status", "06 Return status and progress", "Progress shows completed steps, next action, owner, due date, and blocker.", "Open progress"],
+    ["dashboard", "07 Actionable dashboard", "Firm queue ranks work by urgency instead of showing passive reporting.", "Open work queue"],
+    ["affordances", "08 Clickable vs editable", "Fields use consistent states for editable, auto-entered, verified, approval, and locked.", "View states"],
+    ["complexity", "09 Complexity made navigable", "A large sample dataset supports search, filters, hierarchy, and summary-to-detail movement.", "Open large queue"],
+    ["trust", "10 Trustworthy Smart Review", "Recommendations show action, why, evidence, uncertainty, and correction flow.", "Open Smart Review"],
   ];
 
   const root = html(`
@@ -1007,6 +999,123 @@ function renderUser() {
     <div class="avatar">${state.user.avatar}</div>
     <div><strong>${state.user.name}</strong><div class="muted">${roleLabels[state.role]}</div></div>
   `;
+}
+
+function nextStepForCurrentView() {
+  if (isClientRole()) {
+    const business = state.role === "business_owner";
+    const steps = {
+      start: {
+        label: business ? "Review business documents" : "Upload missing form",
+        description: business
+          ? "Review your business documents and answer one CPA request to keep the entity return moving."
+          : "Upload one missing form first, then EasyTax will take you to the CPA question.",
+      },
+      documents: {
+        label: business ? "Answer CPA request" : "Answer CPA question",
+        description: business
+          ? "Your documents are connected. Next, answer the CPA request tied to the business return."
+          : "Your documents are connected. Next, answer the home office question from your CPA.",
+      },
+      collaboration: {
+        label: "Review progress",
+        description: "Your reply is part of the return record. Next, review the status and what is still blocking completion.",
+      },
+      status: {
+        label: "Back to checklist",
+        description: "You have reached the current end of the client workflow. Return to the checklist to review remaining items.",
+      },
+    };
+    return steps[state.view] || steps.start;
+  }
+
+  if (state.role === "seasonal_staff") {
+    const steps = {
+      dashboard: {
+        label: "Open assigned check",
+        description: "Clear your assigned document checks and escalate anything locked or uncertain.",
+      },
+      documents: {
+        label: "Open messages",
+        description: "After checking documents, review any messages attached to the assigned work.",
+      },
+      collaboration: {
+        label: "Back to assigned work",
+        description: "Return to your assigned work list after responding or escalating.",
+      },
+    };
+    return steps[state.view] || steps.dashboard;
+  }
+
+  const staffSteps = {
+    dashboard: {
+      label: "Open return",
+      description: "Open the highest-priority return and review the sourced fields first.",
+    },
+    trace: {
+      label: "Open Smart Review",
+      description: "After checking source documents, review the Smart Review items that need confirmation.",
+    },
+    ai: {
+      label: "Open messages",
+      description: "After reviewing recommendations, open the related message thread for follow-up.",
+    },
+    collaboration: {
+      label: "Back to queue",
+      description: "Return to the prioritized queue after sending or reviewing messages.",
+    },
+  };
+  return staffSteps[state.view] || staffSteps.dashboard;
+}
+
+function goToNextStep() {
+  const currentStep = nextStepForCurrentView();
+  if (isClientRole()) {
+    const nextByView = {
+      start: "documents",
+      documents: "collaboration",
+      collaboration: "status",
+      status: "start",
+    };
+    state.view = nextByView[state.view] || "documents";
+    if (state.view === "collaboration") {
+      state.selectedThreadId = "thread_home_office";
+    }
+    remember(currentStep.label);
+    render();
+    return;
+  }
+
+  if (state.role === "seasonal_staff") {
+    const nextByView = {
+      dashboard: "documents",
+      documents: "collaboration",
+      collaboration: "dashboard",
+    };
+    state.view = nextByView[state.view] || "documents";
+    remember(currentStep.label);
+    render();
+    return;
+  }
+
+  const nextByView = {
+    dashboard: "trace",
+    trace: "ai",
+    ai: "collaboration",
+    collaboration: "dashboard",
+  };
+  state.view = nextByView[state.view] || "trace";
+  if (state.view === "trace") {
+    state.selectedFieldId = "f_interest";
+  }
+  if (state.view === "ai") {
+    state.selectedRecommendationId = "ai_k1";
+  }
+  if (state.view === "collaboration") {
+    state.selectedThreadId = "thread_k1";
+  }
+  remember(currentStep.label);
+  render();
 }
 
 function roleOptionLabel(user, role) {
