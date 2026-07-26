@@ -1,0 +1,2393 @@
+{
+  "users": [
+    {
+      "id": "u_client",
+      "name": "Maya Chen",
+      "email": "maya@example.com",
+      "roles": [
+        "client"
+      ],
+      "activeRole": "client",
+      "avatar": "MC"
+    },
+    {
+      "id": "u_business",
+      "name": "Sam Rivera",
+      "email": "sam@riverastudio.com",
+      "roles": [
+        "business_owner"
+      ],
+      "activeRole": "business_owner",
+      "avatar": "SR"
+    },
+    {
+      "id": "u_preparer",
+      "name": "Jordan Lee",
+      "email": "jordan@northstar.tax",
+      "roles": [
+        "preparer",
+        "client"
+      ],
+      "activeRole": "preparer",
+      "avatar": "JL"
+    },
+    {
+      "id": "u_admin",
+      "name": "Priya Shah",
+      "email": "priya@northstar.tax",
+      "roles": [
+        "reviewer",
+        "firm_admin"
+      ],
+      "activeRole": "reviewer",
+      "avatar": "PS"
+    },
+    {
+      "id": "u_seasonal",
+      "name": "Casey Nguyen",
+      "email": "casey@northstar.tax",
+      "roles": [
+        "seasonal_staff"
+      ],
+      "activeRole": "seasonal_staff",
+      "avatar": "CN"
+    }
+  ],
+  "returns": [
+    {
+      "id": "ret_chen_2025",
+      "client": "Maya Chen",
+      "entity": "Chen Design Studio LLC",
+      "year": 2025,
+      "stage": "Open items",
+      "progress": 64,
+      "owner": "Client",
+      "nextAction": "Upload brokerage 1099-B and answer home office question.",
+      "blocking": true,
+      "dueDate": "2026-07-28",
+      "complexity": "High",
+      "warnings": 4
+    },
+    {
+      "id": "ret_orbit_2025",
+      "client": "Orbit Coffee",
+      "entity": "Orbit Coffee Inc.",
+      "year": 2025,
+      "stage": "Pending review",
+      "progress": 82,
+      "owner": "Reviewer",
+      "nextAction": "Review Smart Review adjustment for meals limitation.",
+      "blocking": false,
+      "dueDate": "2026-08-03",
+      "complexity": "Medium",
+      "warnings": 2
+    },
+    {
+      "id": "ret_moss_2025",
+      "client": "Eli Moss",
+      "entity": "Individual return",
+      "year": 2025,
+      "stage": "Ready to file",
+      "progress": 96,
+      "owner": "CPA",
+      "nextAction": "Send final e-signature packet.",
+      "blocking": false,
+      "dueDate": "2026-07-25",
+      "complexity": "Low",
+      "warnings": 0
+    }
+  ],
+  "statusTimeline": [
+    {
+      "label": "Intake started",
+      "done": true,
+      "owner": "Client",
+      "date": "Feb 3"
+    },
+    {
+      "label": "Documents received",
+      "done": true,
+      "owner": "Client",
+      "date": "Feb 9"
+    },
+    {
+      "label": "Document review complete",
+      "done": true,
+      "owner": "EasyTax",
+      "date": "Feb 10"
+    },
+    {
+      "label": "Open items",
+      "done": false,
+      "owner": "Client",
+      "date": "Now"
+    },
+    {
+      "label": "Preparation",
+      "done": false,
+      "owner": "Preparer",
+      "date": "Next"
+    },
+    {
+      "label": "Review and file",
+      "done": false,
+      "owner": "Reviewer",
+      "date": "Later"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc_w2",
+      "title": "2025 W-2 - Acme Systems",
+      "fileName": "Maya_Chen_2025_W2_Acme_Systems.pdf",
+      "type": "W-2",
+      "pages": 2,
+      "status": "Verified",
+      "uploadedBy": "Client",
+      "submittedAt": "Feb 9, 2026 at 8:42 AM",
+      "section": "Box 1, wages"
+    },
+    {
+      "id": "doc_1099",
+      "title": "1099-INT - First Harbor Bank",
+      "fileName": "Maya_Chen_1099_INT_First_Harbor_Bank.pdf",
+      "type": "1099-INT",
+      "pages": 1,
+      "status": "Auto-entered",
+      "uploadedBy": "Client",
+      "submittedAt": "Feb 9, 2026 at 8:46 AM",
+      "section": "Interest income"
+    },
+    {
+      "id": "doc_k1",
+      "title": "Schedule K-1 - Bluebird Partners",
+      "fileName": "Bluebird_Partners_2025_Schedule_K1.pdf",
+      "type": "K-1",
+      "pages": 8,
+      "status": "Needs approval",
+      "uploadedBy": "Client",
+      "submittedAt": "Feb 10, 2026 at 2:18 PM",
+      "section": "Ordinary business income"
+    },
+    {
+      "id": "doc_receipts",
+      "title": "Home office receipts bundle",
+      "fileName": "Maya_Chen_Home_Office_Receipts_Bundle.pdf",
+      "type": "Receipts",
+      "pages": 31,
+      "status": "Question open",
+      "uploadedBy": "Client",
+      "submittedAt": "Feb 10, 2026 at 2:31 PM",
+      "section": "Utilities and rent"
+    }
+  ],
+  "fields": [
+    {
+      "id": "f_wages",
+      "form": "1040",
+      "line": "1a",
+      "label": "Wages, salaries, tips",
+      "value": 142850,
+      "format": "currency",
+      "state": "verified",
+      "editable": false,
+      "documentId": "doc_w2",
+      "page": 1,
+      "sourceText": "Box 1 wages, tips, other compensation: 142,850.00",
+      "calculation": "Direct extraction from W-2 Box 1.",
+      "confidence": 0.99
+    },
+    {
+      "id": "f_interest",
+      "form": "1040",
+      "line": "2b",
+      "label": "Taxable interest",
+      "value": 1284,
+      "format": "currency",
+      "state": "ai",
+      "editable": true,
+      "documentId": "doc_1099",
+      "page": 1,
+      "sourceText": "Box 1 interest income: 1,284.17",
+      "calculation": "Rounded to whole dollars for Form 1040.",
+      "confidence": 0.91
+    },
+    {
+      "id": "f_business",
+      "form": "Schedule E",
+      "line": "28",
+      "label": "K-1 ordinary business income",
+      "value": 38420,
+      "format": "currency",
+      "state": "approval",
+      "editable": false,
+      "documentId": "doc_k1",
+      "page": 4,
+      "sourceText": "Box 1 ordinary business income: 38,420",
+      "calculation": "Mapped from K-1 Box 1 to Schedule E passive income section.",
+      "confidence": 0.77
+    },
+    {
+      "id": "f_home_office",
+      "form": "8829",
+      "line": "36",
+      "label": "Home office expense",
+      "value": 3612,
+      "format": "currency",
+      "state": "locked",
+      "editable": false,
+      "documentId": "doc_receipts",
+      "page": 12,
+      "sourceText": "Rent + utilities allocated to 11.6% business use.",
+      "calculation": "(Rent 26,400 + utilities 4,738) x 11.6%; locked until client answers square footage question.",
+      "confidence": 0.68
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread_home_office",
+      "title": "Confirm dedicated home office square footage",
+      "linkedTo": {
+        "type": "Document",
+        "id": "doc_receipts",
+        "label": "Home office receipts bundle"
+      },
+      "visibility": "Client visible",
+      "owner": "Client",
+      "requestStatus": "Waiting on client",
+      "messages": [
+        {
+          "author": "Jordan Lee",
+          "role": "CPA",
+          "visibility": "Client visible",
+          "body": "Can you confirm the room is used only for business and provide its square footage?",
+          "time": "Today 9:12 AM"
+        },
+        {
+          "author": "Priya Shah",
+          "role": "Reviewer",
+          "visibility": "Internal",
+          "body": "Do not approve Form 8829 until the exclusivity answer is explicit.",
+          "time": "Today 9:18 AM"
+        }
+      ]
+    },
+    {
+      "id": "thread_k1",
+      "title": "K-1 passive activity treatment",
+      "linkedTo": {
+        "type": "Return field",
+        "id": "f_business",
+        "label": "Schedule E line 28"
+      },
+      "visibility": "Internal",
+      "owner": "Reviewer",
+      "requestStatus": "Needs firm decision",
+      "messages": [
+        {
+          "author": "Jordan Lee",
+          "role": "CPA",
+          "visibility": "Internal",
+          "body": "EasyTax mapped this as passive. Prior-year note says Maya materially participated.",
+          "time": "Yesterday 4:44 PM"
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task_upload_1099b",
+      "title": "Upload brokerage 1099-B",
+      "owner": "Client",
+      "urgency": "Critical",
+      "due": "2026-07-24",
+      "linked": [
+        "Documents",
+        "Messages"
+      ],
+      "done": false
+    },
+    {
+      "id": "task_home_office",
+      "title": "Answer home office follow-up",
+      "owner": "Client",
+      "urgency": "High",
+      "due": "2026-07-25",
+      "linked": [
+        "Questionnaire",
+        "Form 8829",
+        "Messages"
+      ],
+      "done": false
+    },
+    {
+      "id": "task_review_meals",
+      "title": "Approve meals limitation adjustment",
+      "owner": "Reviewer",
+      "urgency": "Medium",
+      "due": "2026-07-27",
+      "linked": [
+        "Smart Review",
+        "Schedule C"
+      ],
+      "done": false
+    }
+  ],
+  "onboarding": {
+    "clientName": "Maya",
+    "headline": "Two items are blocking your return.",
+    "percent": 42,
+    "steps": [
+      {
+        "label": "Create account",
+        "done": true
+      },
+      {
+        "label": "Connect document sources",
+        "done": true
+      },
+      {
+        "label": "Upload missing forms",
+        "done": false
+      },
+      {
+        "label": "Answer CPA questions",
+        "done": false
+      },
+      {
+        "label": "Review and sign",
+        "done": false
+      }
+    ]
+  },
+  "aiRecommendations": [
+    {
+      "id": "ai_meals",
+      "title": "Limit business meals to 50%",
+      "impact": -1840,
+      "confidence": 0.88,
+      "status": "Ready to approve",
+      "needsConfirmation": false,
+      "recommendation": "Approve the 50% meals limitation adjustment.",
+      "why": "Receipts categorized as client meals and no exception evidence was found.",
+      "confirmationReason": "No confirmation is needed because the receipts, ledger category, and return treatment all agree.",
+      "evidence": [
+        "Expense ledger rows 44-59",
+        "Receipt bundle pages 8-10",
+        "IRS meals rule check"
+      ],
+      "proof": [
+        "All 16 ledger entries are categorized as client meals.",
+        "Receipts on pages 8-10 show restaurant names and attendee notes.",
+        "No receipt is marked as a firm event, staff event, or reimbursed expense."
+      ],
+      "uncertainty": "Two receipts are handwritten and may be staff events instead.",
+      "action": "Approve adjustment"
+    },
+    {
+      "id": "ai_k1",
+      "title": "Review passive activity classification",
+      "impact": 38420,
+      "confidence": 0.62,
+      "status": "Needs confirmation",
+      "needsConfirmation": true,
+      "recommendation": "Ask the CPA to confirm whether Maya materially participated before approving Schedule E treatment.",
+      "why": "Current-year K-1 lacks participation detail and conflicts with last year's workpaper note.",
+      "confirmationReason": "Confirmation is needed because the submitted K-1 does not state participation, and prior-year notes say Maya materially participated.",
+      "evidence": [
+        "K-1 page 4",
+        "Prior-year note: materially participated",
+        "No questionnaire answer yet"
+      ],
+      "proof": [
+        "K-1 page 4 shows ordinary business income but no participation statement.",
+        "Prior-year workpaper says Maya materially participated.",
+        "The client questionnaire has not answered the participation question."
+      ],
+      "uncertainty": "Needs CPA judgment before the return can be finalized.",
+      "action": "Request clarification"
+    }
+  ],
+  "workQueue": [
+    {
+      "id": "queue_18",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-20",
+      "warnings": 7,
+      "openItems": 4,
+      "urgencyScore": 71
+    },
+    {
+      "id": "queue_66",
+      "client": "North Pier LLC",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-07-23",
+      "warnings": 7,
+      "openItems": 2,
+      "urgencyScore": 68
+    },
+    {
+      "id": "queue_170",
+      "client": "Avery Stone",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-21",
+      "warnings": 6,
+      "openItems": 4,
+      "urgencyScore": 66
+    },
+    {
+      "id": "queue_33",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-07-23",
+      "warnings": 6,
+      "openItems": 6,
+      "urgencyScore": 64
+    },
+    {
+      "id": "queue_20",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-07-21",
+      "warnings": 7,
+      "openItems": 3,
+      "urgencyScore": 60
+    },
+    {
+      "id": "queue_107",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-07-27",
+      "warnings": 6,
+      "openItems": 2,
+      "urgencyScore": 60
+    },
+    {
+      "id": "queue_97",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-07-20",
+      "warnings": 4,
+      "openItems": 0,
+      "urgencyScore": 59
+    },
+    {
+      "id": "queue_131",
+      "client": "Eli Moss",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-07-21",
+      "warnings": 4,
+      "openItems": 4,
+      "urgencyScore": 58
+    },
+    {
+      "id": "queue_5",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-07-26",
+      "warnings": 5,
+      "openItems": 5,
+      "urgencyScore": 57
+    },
+    {
+      "id": "queue_15",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-07-25",
+      "warnings": 7,
+      "openItems": 2,
+      "urgencyScore": 56
+    },
+    {
+      "id": "queue_137",
+      "client": "Cedar Homes",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-07-26",
+      "warnings": 7,
+      "openItems": 9,
+      "urgencyScore": 55
+    },
+    {
+      "id": "queue_80",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-07-21",
+      "warnings": 3,
+      "openItems": 7,
+      "urgencyScore": 54
+    },
+    {
+      "id": "queue_100",
+      "client": "Cedar Homes",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-07-27",
+      "warnings": 7,
+      "openItems": 1,
+      "urgencyScore": 54
+    },
+    {
+      "id": "queue_116",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-07-23",
+      "warnings": 6,
+      "openItems": 7,
+      "urgencyScore": 54
+    },
+    {
+      "id": "queue_148",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-07-27",
+      "warnings": 7,
+      "openItems": 6,
+      "urgencyScore": 54
+    },
+    {
+      "id": "queue_85",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-20",
+      "warnings": 5,
+      "openItems": 6,
+      "urgencyScore": 53
+    },
+    {
+      "id": "queue_13",
+      "client": "Maya Chen",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-29",
+      "warnings": 7,
+      "openItems": 8,
+      "urgencyScore": 52
+    },
+    {
+      "id": "queue_43",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-07-27",
+      "warnings": 4,
+      "openItems": 4,
+      "urgencyScore": 52
+    },
+    {
+      "id": "queue_54",
+      "client": "Juniper Labs",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-07-21",
+      "warnings": 5,
+      "openItems": 9,
+      "urgencyScore": 52
+    },
+    {
+      "id": "queue_86",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-29",
+      "warnings": 7,
+      "openItems": 9,
+      "urgencyScore": 52
+    },
+    {
+      "id": "queue_123",
+      "client": "Luna Patel",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-29",
+      "warnings": 7,
+      "openItems": 5,
+      "urgencyScore": 52
+    },
+    {
+      "id": "queue_36",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-07-30",
+      "warnings": 7,
+      "openItems": 1,
+      "urgencyScore": 51
+    },
+    {
+      "id": "queue_41",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-28",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 51
+    },
+    {
+      "id": "queue_166",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-26",
+      "warnings": 6,
+      "openItems": 9,
+      "urgencyScore": 51
+    },
+    {
+      "id": "queue_46",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "CPA",
+      "dueDate": "2026-07-30",
+      "warnings": 4,
+      "openItems": 1,
+      "urgencyScore": 49
+    },
+    {
+      "id": "queue_138",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-21",
+      "warnings": 4,
+      "openItems": 9,
+      "urgencyScore": 48
+    },
+    {
+      "id": "queue_6",
+      "client": "North Pier LLC",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-22",
+      "warnings": 4,
+      "openItems": 1,
+      "urgencyScore": 47
+    },
+    {
+      "id": "queue_142",
+      "client": "Juniper Labs",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-28",
+      "warnings": 3,
+      "openItems": 4,
+      "urgencyScore": 47
+    },
+    {
+      "id": "queue_177",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-07-22",
+      "warnings": 4,
+      "openItems": 0,
+      "urgencyScore": 47
+    },
+    {
+      "id": "queue_167",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-27",
+      "warnings": 5,
+      "openItems": 0,
+      "urgencyScore": 46
+    },
+    {
+      "id": "queue_178",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-02",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 46
+    },
+    {
+      "id": "queue_12",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-07-24",
+      "warnings": 4,
+      "openItems": 7,
+      "urgencyScore": 45
+    },
+    {
+      "id": "queue_128",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-05",
+      "warnings": 7,
+      "openItems": 5,
+      "urgencyScore": 45
+    },
+    {
+      "id": "queue_141",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-07-28",
+      "warnings": 5,
+      "openItems": 6,
+      "urgencyScore": 45
+    },
+    {
+      "id": "queue_144",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-08-12",
+      "warnings": 6,
+      "openItems": 4,
+      "urgencyScore": 44
+    },
+    {
+      "id": "queue_165",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-29",
+      "warnings": 5,
+      "openItems": 1,
+      "urgencyScore": 44
+    },
+    {
+      "id": "queue_34",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-07",
+      "warnings": 7,
+      "openItems": 3,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_96",
+      "client": "Juniper Labs",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-07-26",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_102",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-03",
+      "warnings": 6,
+      "openItems": 4,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_114",
+      "client": "Avery Stone",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-07",
+      "warnings": 7,
+      "openItems": 1,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_135",
+      "client": "North Pier LLC",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-07",
+      "warnings": 7,
+      "openItems": 5,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_139",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-07",
+      "warnings": 7,
+      "openItems": 3,
+      "urgencyScore": 43
+    },
+    {
+      "id": "queue_35",
+      "client": "Eli Moss",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-07-23",
+      "warnings": 3,
+      "openItems": 0,
+      "urgencyScore": 42
+    },
+    {
+      "id": "queue_31",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-07-24",
+      "warnings": 3,
+      "openItems": 8,
+      "urgencyScore": 41
+    },
+    {
+      "id": "queue_89",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-09",
+      "warnings": 7,
+      "openItems": 5,
+      "urgencyScore": 41
+    },
+    {
+      "id": "queue_98",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-28",
+      "warnings": 4,
+      "openItems": 9,
+      "urgencyScore": 41
+    },
+    {
+      "id": "queue_140",
+      "client": "Avery Stone",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-07-28",
+      "warnings": 4,
+      "openItems": 7,
+      "urgencyScore": 41
+    },
+    {
+      "id": "queue_21",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-07-25",
+      "warnings": 3,
+      "openItems": 8,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_78",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-06",
+      "warnings": 6,
+      "openItems": 7,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_130",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-25",
+      "warnings": 3,
+      "openItems": 7,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_133",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-07-31",
+      "warnings": 2,
+      "openItems": 7,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_150",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-06",
+      "warnings": 6,
+      "openItems": 7,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_173",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-10",
+      "warnings": 7,
+      "openItems": 5,
+      "urgencyScore": 40
+    },
+    {
+      "id": "queue_47",
+      "client": "Maya Chen",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-22",
+      "warnings": 2,
+      "openItems": 2,
+      "urgencyScore": 39
+    },
+    {
+      "id": "queue_103",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-08",
+      "warnings": 6,
+      "openItems": 3,
+      "urgencyScore": 38
+    },
+    {
+      "id": "queue_112",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-07-31",
+      "warnings": 4,
+      "openItems": 7,
+      "urgencyScore": 38
+    },
+    {
+      "id": "queue_40",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-20",
+      "warnings": 1,
+      "openItems": 8,
+      "urgencyScore": 37
+    },
+    {
+      "id": "queue_129",
+      "client": "Avery Stone",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-09",
+      "warnings": 6,
+      "openItems": 3,
+      "urgencyScore": 37
+    },
+    {
+      "id": "queue_152",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-01",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 37
+    },
+    {
+      "id": "queue_19",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-29",
+      "warnings": 3,
+      "openItems": 9,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_53",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-06",
+      "warnings": 5,
+      "openItems": 8,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_62",
+      "client": "Eli Moss",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-25",
+      "warnings": 2,
+      "openItems": 3,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_65",
+      "client": "North Pier LLC",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-07-29",
+      "warnings": 3,
+      "openItems": 3,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_90",
+      "client": "Avery Stone",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-06",
+      "warnings": 5,
+      "openItems": 1,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_91",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-20",
+      "warnings": 6,
+      "openItems": 7,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_113",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-10",
+      "warnings": 6,
+      "openItems": 5,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_122",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-06",
+      "warnings": 5,
+      "openItems": 9,
+      "urgencyScore": 36
+    },
+    {
+      "id": "queue_84",
+      "client": "Cedar Homes",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-22",
+      "warnings": 1,
+      "openItems": 1,
+      "urgencyScore": 35
+    },
+    {
+      "id": "queue_29",
+      "client": "Eli Moss",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-07-23",
+      "warnings": 1,
+      "openItems": 3,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_52",
+      "client": "Orbit Coffee",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-08",
+      "warnings": 5,
+      "openItems": 3,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_68",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-04",
+      "warnings": 4,
+      "openItems": 4,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_73",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-08",
+      "warnings": 5,
+      "openItems": 7,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_154",
+      "client": "Orbit Coffee",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-02",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_174",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-07-23",
+      "warnings": 1,
+      "openItems": 1,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_175",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-16",
+      "warnings": 7,
+      "openItems": 4,
+      "urgencyScore": 34
+    },
+    {
+      "id": "queue_63",
+      "client": "Avery Stone",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "Preparer",
+      "dueDate": "2026-08-01",
+      "warnings": 3,
+      "openItems": 3,
+      "urgencyScore": 33
+    },
+    {
+      "id": "queue_158",
+      "client": "Luna Patel",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-24",
+      "warnings": 1,
+      "openItems": 8,
+      "urgencyScore": 33
+    },
+    {
+      "id": "queue_74",
+      "client": "Avery Stone",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "CPA",
+      "dueDate": "2026-08-16",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 32
+    },
+    {
+      "id": "queue_83",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-14",
+      "warnings": 6,
+      "openItems": 1,
+      "urgencyScore": 32
+    },
+    {
+      "id": "queue_87",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-18",
+      "warnings": 7,
+      "openItems": 3,
+      "urgencyScore": 32
+    },
+    {
+      "id": "queue_120",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-06",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 32
+    },
+    {
+      "id": "queue_161",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-25",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 32
+    },
+    {
+      "id": "queue_3",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "CPA",
+      "dueDate": "2026-08-01",
+      "warnings": 0,
+      "openItems": 9,
+      "urgencyScore": 31
+    },
+    {
+      "id": "queue_25",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-03",
+      "warnings": 3,
+      "openItems": 3,
+      "urgencyScore": 31
+    },
+    {
+      "id": "queue_99",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-19",
+      "warnings": 7,
+      "openItems": 0,
+      "urgencyScore": 31
+    },
+    {
+      "id": "queue_164",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-15",
+      "warnings": 6,
+      "openItems": 5,
+      "urgencyScore": 31
+    },
+    {
+      "id": "queue_171",
+      "client": "Maya Chen",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-08-11",
+      "warnings": 5,
+      "openItems": 9,
+      "urgencyScore": 31
+    },
+    {
+      "id": "queue_94",
+      "client": "Orbit Coffee",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-08",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 30
+    },
+    {
+      "id": "queue_153",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-23",
+      "warnings": 0,
+      "openItems": 9,
+      "urgencyScore": 30
+    },
+    {
+      "id": "queue_39",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-05",
+      "warnings": 3,
+      "openItems": 7,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_59",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-08-01",
+      "warnings": 2,
+      "openItems": 9,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_70",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-07-28",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_105",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-17",
+      "warnings": 6,
+      "openItems": 3,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_115",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-08-09",
+      "warnings": 4,
+      "openItems": 8,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_162",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-13",
+      "warnings": 5,
+      "openItems": 1,
+      "urgencyScore": 29
+    },
+    {
+      "id": "queue_38",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-25",
+      "warnings": 0,
+      "openItems": 3,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_76",
+      "client": "Maya Chen",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-07-25",
+      "warnings": 0,
+      "openItems": 2,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_117",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-06",
+      "warnings": 3,
+      "openItems": 7,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_124",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-18",
+      "warnings": 6,
+      "openItems": 9,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_143",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-10",
+      "warnings": 4,
+      "openItems": 2,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_172",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-07-29",
+      "warnings": 1,
+      "openItems": 6,
+      "urgencyScore": 28
+    },
+    {
+      "id": "queue_30",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-17",
+      "warnings": 3,
+      "openItems": 4,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_49",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-15",
+      "warnings": 5,
+      "openItems": 2,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_55",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-26",
+      "warnings": 0,
+      "openItems": 6,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_82",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-30",
+      "warnings": 1,
+      "openItems": 4,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_104",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Preparation",
+      "owner": "Preparer",
+      "dueDate": "2026-07-30",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_134",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-03",
+      "warnings": 2,
+      "openItems": 4,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_149",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-15",
+      "warnings": 5,
+      "openItems": 7,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_168",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-08-11",
+      "warnings": 4,
+      "openItems": 7,
+      "urgencyScore": 27
+    },
+    {
+      "id": "queue_7",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-12",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_10",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-04",
+      "warnings": 2,
+      "openItems": 4,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_23",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-08",
+      "warnings": 3,
+      "openItems": 8,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_48",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-08-12",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_95",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "Preparer",
+      "dueDate": "2026-07-31",
+      "warnings": 1,
+      "openItems": 4,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_111",
+      "client": "Maya Chen",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-08-06",
+      "warnings": 0,
+      "openItems": 8,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_132",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Preparation",
+      "owner": "Preparer",
+      "dueDate": "2026-08-16",
+      "warnings": 5,
+      "openItems": 9,
+      "urgencyScore": 26
+    },
+    {
+      "id": "queue_11",
+      "client": "Orbit Coffee",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-09",
+      "warnings": 3,
+      "openItems": 5,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_67",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-17",
+      "warnings": 5,
+      "openItems": 7,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_77",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-13",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_156",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-07-28",
+      "warnings": 0,
+      "openItems": 9,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_169",
+      "client": "North Pier LLC",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-11",
+      "warnings": 1,
+      "openItems": 9,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_176",
+      "client": "North Pier LLC",
+      "return": "2025 1065",
+      "stage": "Open items",
+      "owner": "CPA",
+      "dueDate": "2026-08-11",
+      "warnings": 1,
+      "openItems": 9,
+      "urgencyScore": 25
+    },
+    {
+      "id": "queue_44",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-10",
+      "warnings": 3,
+      "openItems": 4,
+      "urgencyScore": 24
+    },
+    {
+      "id": "queue_60",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-14",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 24
+    },
+    {
+      "id": "queue_61",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-18",
+      "warnings": 5,
+      "openItems": 8,
+      "urgencyScore": 24
+    },
+    {
+      "id": "queue_101",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-07-29",
+      "warnings": 0,
+      "openItems": 3,
+      "urgencyScore": 24
+    },
+    {
+      "id": "queue_109",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-14",
+      "warnings": 4,
+      "openItems": 1,
+      "urgencyScore": 24
+    },
+    {
+      "id": "queue_4",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "CPA",
+      "dueDate": "2026-07-30",
+      "warnings": 0,
+      "openItems": 2,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_8",
+      "client": "Cedar Homes",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-08-03",
+      "warnings": 1,
+      "openItems": 7,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_51",
+      "client": "Luna Patel",
+      "return": "2025 1120-S",
+      "stage": "Open items",
+      "owner": "Client",
+      "dueDate": "2026-08-13",
+      "warnings": 1,
+      "openItems": 3,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_93",
+      "client": "Cedar Homes",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-19",
+      "warnings": 5,
+      "openItems": 5,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_108",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-30",
+      "warnings": 0,
+      "openItems": 1,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_119",
+      "client": "Luna Patel",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-03",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_147",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-15",
+      "warnings": 4,
+      "openItems": 0,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_180",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-11",
+      "warnings": 3,
+      "openItems": 6,
+      "urgencyScore": 23
+    },
+    {
+      "id": "queue_14",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-16",
+      "warnings": 4,
+      "openItems": 2,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_24",
+      "client": "North Pier LLC",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-04",
+      "warnings": 1,
+      "openItems": 0,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_32",
+      "client": "Cedar Homes",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-04",
+      "warnings": 1,
+      "openItems": 7,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_37",
+      "client": "North Pier LLC",
+      "return": "2025 1120-S",
+      "stage": "Ready to file",
+      "owner": "CPA",
+      "dueDate": "2026-08-04",
+      "warnings": 1,
+      "openItems": 9,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_50",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Pending review",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-31",
+      "warnings": 0,
+      "openItems": 4,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_57",
+      "client": "North Pier LLC",
+      "return": "2025 1065",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-12",
+      "warnings": 3,
+      "openItems": 9,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_136",
+      "client": "Luna Patel",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-16",
+      "warnings": 4,
+      "openItems": 3,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_151",
+      "client": "Eli Moss",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-12",
+      "warnings": 3,
+      "openItems": 0,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_157",
+      "client": "Avery Stone",
+      "return": "2025 1120-S",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-07-31",
+      "warnings": 0,
+      "openItems": 6,
+      "urgencyScore": 22
+    },
+    {
+      "id": "queue_22",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-19",
+      "warnings": 2,
+      "openItems": 3,
+      "urgencyScore": 21
+    },
+    {
+      "id": "queue_27",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "Preparer",
+      "dueDate": "2026-08-19",
+      "warnings": 2,
+      "openItems": 3,
+      "urgencyScore": 21
+    },
+    {
+      "id": "queue_71",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Open items",
+      "owner": "CPA",
+      "dueDate": "2026-08-15",
+      "warnings": 1,
+      "openItems": 6,
+      "urgencyScore": 21
+    },
+    {
+      "id": "queue_88",
+      "client": "Luna Patel",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-17",
+      "warnings": 4,
+      "openItems": 5,
+      "urgencyScore": 21
+    },
+    {
+      "id": "queue_17",
+      "client": "North Pier LLC",
+      "return": "2025 1065",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-06",
+      "warnings": 1,
+      "openItems": 6,
+      "urgencyScore": 20
+    },
+    {
+      "id": "queue_106",
+      "client": "Orbit Coffee",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Client",
+      "dueDate": "2026-08-18",
+      "warnings": 4,
+      "openItems": 9,
+      "urgencyScore": 20
+    },
+    {
+      "id": "queue_69",
+      "client": "Juniper Labs",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-07",
+      "warnings": 1,
+      "openItems": 5,
+      "urgencyScore": 19
+    },
+    {
+      "id": "queue_72",
+      "client": "Avery Stone",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-15",
+      "warnings": 3,
+      "openItems": 7,
+      "urgencyScore": 19
+    },
+    {
+      "id": "queue_92",
+      "client": "Cedar Homes",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-07",
+      "warnings": 1,
+      "openItems": 4,
+      "urgencyScore": 19
+    },
+    {
+      "id": "queue_125",
+      "client": "Eli Moss",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-15",
+      "warnings": 3,
+      "openItems": 6,
+      "urgencyScore": 19
+    },
+    {
+      "id": "queue_9",
+      "client": "Orbit Coffee",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-12",
+      "warnings": 2,
+      "openItems": 1,
+      "urgencyScore": 18
+    },
+    {
+      "id": "queue_58",
+      "client": "Cedar Homes",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-08",
+      "warnings": 1,
+      "openItems": 6,
+      "urgencyScore": 18
+    },
+    {
+      "id": "queue_118",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-04",
+      "warnings": 0,
+      "openItems": 8,
+      "urgencyScore": 18
+    },
+    {
+      "id": "queue_163",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-16",
+      "warnings": 3,
+      "openItems": 5,
+      "urgencyScore": 18
+    },
+    {
+      "id": "queue_121",
+      "client": "Maya Chen",
+      "return": "2025 1040",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-13",
+      "warnings": 2,
+      "openItems": 4,
+      "urgencyScore": 17
+    },
+    {
+      "id": "queue_1",
+      "client": "Orbit Coffee",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-06",
+      "warnings": 0,
+      "openItems": 1,
+      "urgencyScore": 16
+    },
+    {
+      "id": "queue_81",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-18",
+      "warnings": 3,
+      "openItems": 9,
+      "urgencyScore": 16
+    },
+    {
+      "id": "queue_155",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-06",
+      "warnings": 0,
+      "openItems": 2,
+      "urgencyScore": 16
+    },
+    {
+      "id": "queue_146",
+      "client": "Eli Moss",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-08-19",
+      "warnings": 3,
+      "openItems": 1,
+      "urgencyScore": 15
+    },
+    {
+      "id": "queue_16",
+      "client": "Luna Patel",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-13",
+      "warnings": 1,
+      "openItems": 8,
+      "urgencyScore": 13
+    },
+    {
+      "id": "queue_42",
+      "client": "Avery Stone",
+      "return": "2025 1065",
+      "stage": "Preparation",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-17",
+      "warnings": 2,
+      "openItems": 1,
+      "urgencyScore": 13
+    },
+    {
+      "id": "queue_56",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-13",
+      "warnings": 1,
+      "openItems": 6,
+      "urgencyScore": 13
+    },
+    {
+      "id": "queue_26",
+      "client": "Orbit Coffee",
+      "return": "2025 1065",
+      "stage": "Intake",
+      "owner": "Client",
+      "dueDate": "2026-08-10",
+      "warnings": 0,
+      "openItems": 7,
+      "urgencyScore": 12
+    },
+    {
+      "id": "queue_75",
+      "client": "Avery Stone",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Preparer",
+      "dueDate": "2026-08-18",
+      "warnings": 2,
+      "openItems": 9,
+      "urgencyScore": 12
+    },
+    {
+      "id": "queue_79",
+      "client": "North Pier LLC",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Preparer",
+      "dueDate": "2026-08-11",
+      "warnings": 0,
+      "openItems": 0,
+      "urgencyScore": 11
+    },
+    {
+      "id": "queue_2",
+      "client": "Avery Stone",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Client",
+      "dueDate": "2026-08-16",
+      "warnings": 1,
+      "openItems": 3,
+      "urgencyScore": 10
+    },
+    {
+      "id": "queue_28",
+      "client": "Cedar Homes",
+      "return": "2025 1041",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-16",
+      "warnings": 1,
+      "openItems": 7,
+      "urgencyScore": 10
+    },
+    {
+      "id": "queue_45",
+      "client": "Avery Stone",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-16",
+      "warnings": 1,
+      "openItems": 5,
+      "urgencyScore": 10
+    },
+    {
+      "id": "queue_126",
+      "client": "Maya Chen",
+      "return": "2025 1065",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-20",
+      "warnings": 2,
+      "openItems": 1,
+      "urgencyScore": 10
+    },
+    {
+      "id": "queue_159",
+      "client": "Avery Stone",
+      "return": "2025 1065",
+      "stage": "Ready to file",
+      "owner": "Preparer",
+      "dueDate": "2026-08-17",
+      "warnings": 1,
+      "openItems": 7,
+      "urgencyScore": 9
+    },
+    {
+      "id": "queue_64",
+      "client": "Orbit Coffee",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "CPA",
+      "dueDate": "2026-08-18",
+      "warnings": 1,
+      "openItems": 7,
+      "urgencyScore": 8
+    },
+    {
+      "id": "queue_127",
+      "client": "Maya Chen",
+      "return": "2025 1041",
+      "stage": "Pending review",
+      "owner": "Client",
+      "dueDate": "2026-08-18",
+      "warnings": 1,
+      "openItems": 2,
+      "urgencyScore": 8
+    },
+    {
+      "id": "queue_145",
+      "client": "Juniper Labs",
+      "return": "2025 1041",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-18",
+      "warnings": 1,
+      "openItems": 5,
+      "urgencyScore": 8
+    },
+    {
+      "id": "queue_110",
+      "client": "Juniper Labs",
+      "return": "2025 1040",
+      "stage": "Ready to file",
+      "owner": "Reviewer",
+      "dueDate": "2026-08-16",
+      "warnings": 0,
+      "openItems": 1,
+      "urgencyScore": 6
+    },
+    {
+      "id": "queue_160",
+      "client": "Cedar Homes",
+      "return": "2025 1040",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-19",
+      "warnings": 0,
+      "openItems": 7,
+      "urgencyScore": 3
+    },
+    {
+      "id": "queue_179",
+      "client": "Maya Chen",
+      "return": "2025 1120-S",
+      "stage": "Intake",
+      "owner": "CPA",
+      "dueDate": "2026-08-20",
+      "warnings": 0,
+      "openItems": 6,
+      "urgencyScore": 2
+    }
+  ]
+}
